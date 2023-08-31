@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.joker.dorabey.repository.mapper.DeviceRepo">
+
+    <resultMap id="ResultMap" type="com.joker.dorabey.repository.entity.DeviceEntity">
+        <result column="serial_number" jdbcType="VARCHAR" property="serialNumber" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="type" property="type" />
+        <result column="status" property="status" />
+        <result column="real_width" jdbcType="INTEGER" property="realWidth" />
+        <result column="real_height" jdbcType="INTEGER" property="realHeight" />
+        <result column="virtual_width" jdbcType="INTEGER" property="virtualWidth" />
+        <result column="virtual_height" jdbcType="INTEGER" property="virtualHeight" />
+        <result column="image" jdbcType="VARCHAR" property="image" />
+    </resultMap>
+
+    <select id="findById" resultType="com.joker.dorabey.repository.entity.DeviceEntity">
+        select * from device where id = #{id}
+    </select>
+
+    <select id="findAll" resultMap="ResultMap" resultType="com.joker.dorabey.repository.entity.DeviceEntity">
+        select * from device
+    </select>
+    
+    <insert id="insert" keyProperty="serial_number" parameterType="com.joker.dorabey.repository.entity.DeviceEntity">
+        insert into device(serial_number, `name`, `type`, status, real_width, real_height, virtual_width, virtual_height, image)
+        values (#{serialNumber}, #{name}, #{type}, #{status}, #{real_width}, #{real_height}, #{virtual_width}, #{virtual_height}, #{image})
+    </insert>
+
+    <update id="update" parameterType="com.joker.dorabey.repository.entity.DeviceEntity">
+        update device
+        set `name` = #{name}, `type` = #{type}, status = #{status},
+            real_width = #{realWidth}, real_height = #{realHeight},
+            virtual_width = #{virtualWidth}, virtual_height = #{virtualHeight},
+            image = #{image}
+        where serial_number = #{serialNumber}
+    </update>
+
+</mapper>

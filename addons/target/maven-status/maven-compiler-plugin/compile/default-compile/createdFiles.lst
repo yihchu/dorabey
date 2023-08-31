@@ -1,0 +1,4 @@
+com/joker/dorabey/processors/FromEntityProcessor.class
+META-INF/services/javax.annotation.processing.Processor
+com/joker/dorabey/annotations/FromEntity.class
+com/joker/dorabey/processors/FromEntityProcessor$SourceVisitor.class

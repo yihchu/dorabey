@@ -1,0 +1,39 @@
+spring:
+  jmx:
+    enabled: false
+  datasource:
+    url: jdbc:sqlite:/Users/cl10076-m/Code/IdeaProjects/dorabey/dorabey.sqlite
+    username:
+    password:
+    driver-class-name: org.sqlite.JDBC # sqlite驱动
+    initial-size: 4
+    max-idle: 4
+    min-idle: 1
+    validation-query: select 1
+    test-while-idle: true
+    test-on-return: true
+    min-evictable-idle-time-millis: 10000
+    time-between-eviction-runs-millis: 600000
+  profiles:
+    active: '@environment@'
+
+server:
+  servlet:
+    context-path: /apis
+    encoding:
+      force-response: true
+      force-request: true
+      force: true
+      enabled: true
+      charset: UTF-8
+  port: 28080
+
+# mybatis配置
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*Mapper.xml # 配置mapper.xml文件路径
+  type-aliases-package: com.desire.entity # 实体类包名
+
+# http://localhost:28080/apis/swagger-ui/
+#  163授权码：NIAVUPNLQUTLOVQS
+#  qq授权码：pthquxuephwhbecg
+
